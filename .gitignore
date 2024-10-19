@@ -1,0 +1,7 @@
+# Ignorovat node_modules
+node_modules/
+
+# Ignorovat další soubory a adresáre
+.DS_Store
+*.log
+

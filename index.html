@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seznamka - love-dates</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+
+        #header h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        nav button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background: #0779e4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .active {
+            display: block;
+        }
+
+        input, select, button, textarea {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .coin-container, .emoji-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .emoji {
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        #chat-box {
+            width: 100%;
+            height: 150px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            overflow-y: scroll;
+        }
+
+        .chat-message {
+            margin: 5px 0;
+        }
+</style>
+<form action="https://www.paypal.com/ncp/payment/76E9F6NKHAPVU" method="post" target="_top" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+  <input class="pp-76E9F6NKHAPVU" type="submit" value="Koupit" />
+  <img src=https://www.paypalobjects.com/images/Debit_Credit_APM.svg alt="cards" />
+  <section> Využívá službu <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+</form>
+</head>
+
+<body>
+
+<div id="header">
+    <h1>Seznamka - love-dates</h1>
+</div>
+
+<div class="container">
+    <!-- Navigace -->
+    <nav>
+        <button onclick="showSection('registration-section')">Registrace</button>
+        <button onclick="showSection('profile-section')">Profil</button>
+        <button onclick="showSection('chat-section')">Chat</button>
+        <button onclick="showSection('payment-section')">Platby</button>
+    </nav>
+
+    <!-- Sekce Registrace -->
+    <div id="registration-section" class="section active">
+        <h2>Registrace</h2>
+        <input type="text" id="username" placeholder="Uživatelské jméno">
+        <input type="email" id="email" placeholder="E-mail">
+        <input type="password" id="password" placeholder="Heslo">
+        <button id="register">Registrovat</button>
+    </div>
+
+    <!-- Sekce Profil -->
+    <div id="profile-section" class="section">
+        <h2>Profil</h2>
+        <p id="profile-info"></p>
+    </div>
+
+    <!-- Chat a smajlíky -->
+    <div id="chat-section" class="section">
+        <h2>Chat</h2>
+        <div id="chat-box"></div>
+        <textarea id="chat-input" placeholder="Napište zprávu..."></textarea>
+        <button id="send-message">Odeslat zprávu</button>
+
+        <div class="emoji-container">
+            <span class="emoji">😊</span>
+            <span class="emoji">😂</span>
+            <span class="emoji">❤️</span>
+            <span class="emoji">😘</span>
+            <span class="emoji">👍</span>
+            <span class="emoji">🥳</span>
+            <span class="emoji">💖</span>
+            <span class="emoji">🎂</span>
+            <span class="emoji">🎁</span>
+            <span class="emoji">🎈</span>
+            <span class="emoji">😍</span>
+            <span class="emoji">🎉</span>
+            <span class="emoji">🙏</span>
+            <span class="emoji">🧁</span>
+            <span class="emoji">🍰</span>
+            <span class="emoji">🎺</span>
+            <span class="emoji">🎊</span>
+            <span class="emoji">💕</span>
+            <span class="emoji">🔥</span>
+        </div>
+
+        <div class="coin-container">
+            <span>Zbývající mince: <span id="coin-count">150</span></span>
+        </div>
+    </div>
+    
+    <p><h4>Vyberte si z rozbalovací nabídky kolik chcete  mincí 500 mincí je minimum, maximum je 10000 mincí cena za 500 mincí činí 250Kč z pole quantiti si vyberte číslo od 1-20 ! 1 = 500 mincí což činí 250Kč. </h4></p>
+    
+    <!-- Sekce Platby -->
+    <div id="payment-section" class="section">
+        <h2>Koupit mince</h2>
+        <label for="coin-amount">Vyberte počet mincí:</label>
+        <select id="coin-amount">
+            <option value="500">500 mincí</option>
+            <option value="1000">1000 mincí</option>
+            <option value="1500">1500 mincí</option>
+            <option value="2000">2000 mincí</option>
+            <option value="2500">2500 mincí</option>
+            <option value="3000">3000 mincí</option>
+            <option value="3500">3500 mincí</option>
+            <option value="4000">4000 mincí</option>
+            <option value="4500">4500 mincí</option>
+            <option value="5000">5000 mincí</option>
+            <option value="6000">6000 mincí</option>
+            <option value="7000">7000 mincí</option>
+            <option value="8000">8000 mincí</option>
+            <option value="9000">9000 mincí</option>
+            <option value="10000">10000 mincí</option>
+        </select>
+
+        <p>Cena: <span id="price">250 Kč</span></p>
+    </div>
+    
+</div>
+<ul id="messages"></ul>
+    <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+    // Funkce pro přepínání mezi sekcemi
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Základní funkce pro registraci
+    document.getElementById('register').addEventListener('click', function () {
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const profileInfo = `Uživatelské jméno: ${username} | E-mail: ${email}`;
+        document.getElementById('profile-info').innerText = profileInfo;
+        alert('Registrace úspěšná!');
+    });
+
+    // Přidání smajlíka do chatu
+    document.querySelectorAll('.emoji').forEach(function(emoji) {
+        emoji.addEventListener('click', function() {
+            var chatInput = document.getElementById('chat-input');
+            chatInput.value += emoji.textContent;
+        });
+    });
+
+    // Odeslání zprávy a odečítání mincí
+    let coins = 150;
+    const coinDisplay = document.getElementById('coin-count');
+    document.getElementById('send-message').addEventListener('click', function () {
+        const chatBox = document.getElementById('chat-box');
+        const message = document.getElementById('chat-input').value;
+
+        if (coins <= 0) {
+            alert('Došly vám mince, prosím kupte si další.');
+            showSection('payment-section');
+            return;
+        }
+
+        // Přidání zprávy do chatu
+        if (message.trim() !== '') {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'chat-message';
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            document.getElementById('chat-input').value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;  // Posunout chat dolů
+
+            // Odečtení mincí
+            coins -= 30;
+            coinDisplay.textContent = coins;
+
+            if (coins <= 0) {
+                alert('Došly vám mince, prosím kupte si další.');
+                showSection('payment-section');
+            }
+        }
+    });
+ // Inicializace socket.io
+        const socket = io();
+ const form = document.getElementById('form');
+        const input = document.getElementById('input');
+      form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('chat message', input.value);
+                input.value = '';
+            }
+        });    
+
+ socket.on('chat message', function(msg) {
+            const item = document.createElement('li');
+            item.textContent = msg;
+            document.getElementById('messages').appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+
+
+// Odesílání zpráv
+        const sendButton = document.getElementById('send-button');
+        const chatMessage = document.getElementById('chat-message');
+        const chatBox = document.getElementById('chat-box');
+
+// Událost pro odeslání zprávy
+        sendButton.addEventListener('click', () => {
+            const message = chatMessage.value;
+            if (message.trim() !== '') {
+                socket.emit('chat message', message);  // Odesílání zprávy přes socket.io
+                chatMessage.value = '';  // Vymazání vstupu po odeslání
+            }
+        });
+
+  // Příjem zpráv
+        socket.on('chat message', (message) => {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;  // Automatický posun dolů
+        });
+
+    // Aktualizace ceny podle počtu vybraných mincí
+    document.getElementById('coin-amount').addEventListener('change', function () {
+        const amount = parseInt(this.value);
+        const price = amount / 2;
+        document.getElementById('price').textContent = `${price} Kč`;
+    });
+</script>
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+</body>
+</html>
